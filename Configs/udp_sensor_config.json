@@ -1,0 +1,20 @@
+{
+    "type":"new_sensor",
+    "content": {
+        "manufacturer_info": {
+            "name":"a",
+            "date":"2020-2-9",
+            "model No":"qXc5678"
+        },
+        "specifications":{
+            "rating":"0.15wh",
+            "range":"2m",
+            "poll_rate":1
+        },
+        "output_format":{
+            "number":"data"
+        },
+        "type":"temp",
+        "actions":["start", "stop", "poll_rate", "print"]
+    }   
+}

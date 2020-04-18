@@ -1,0 +1,13 @@
+{
+    "sensor_manager_topic":"sensor_manager",
+    "sensor_manager_topic_partitions":3,
+    "kafka_host":"localhost:9092",
+    "kafka_connect":"http://localhost:8083",
+    "connector_name":"db_ingestor",
+    "admin_topic":"admin_topic",
+    "sensor_mongo_client":"mongodb://localhost:27017/",
+    "sensor_data_db":"data_db_test",
+    "sensor_registry_db":"registry_db_test",
+    "default_count_returned":1,
+    "sensor_manager_response_timeout":0.5
+}

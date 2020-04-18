@@ -1,0 +1,17 @@
+{
+    "manufacturer_info": {
+        "name":"temp-sens-manufacturer",
+        "date":"2000-5-19",
+        "model No":"qXc5678"
+    },
+    "specifications":{
+        "rating":"0.15wh",
+        "range":"2m",
+        "poll_rate":30
+    },
+    "output_format":{
+        "Number":"Farhenheit in the range 0-100 degrees"
+    },
+    "type":"temperature",
+    "actions":["start", "stop", "poll_rate", "print"] 
+}
