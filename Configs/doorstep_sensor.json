@@ -1,0 +1,18 @@
+{
+    "manufacturer_info": {
+        "name":"doorstep-sens-manufacturer",
+        "date":"2000-1-11",
+        "model No":"woof"
+    },
+    "specifications":{
+        "rating":"0.15wh",
+        "range":"2m",
+        "poll_rate":0.05
+    },
+    "output_format":{
+        "0":"No Movement Detected",
+        "1":"Movement Detected"
+    },
+    "type":"motion",
+    "actions":["start", "stop"] 
+}

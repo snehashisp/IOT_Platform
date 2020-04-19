@@ -34,7 +34,7 @@ class KafkaRetriever():
             self.kafka_consumer.poll(1)
 
     def _get_data(self, response_timeout):
-        message = self.kafka_consumer.poll(response_timeout)
+        message = self.kafka_consumer.poll(timeout = response_timeout)
         if message != None and not message.error():
             return message.value().decode()
         return None

@@ -8,7 +8,6 @@ import time
 
 
 state = False
-poll_rate = 5
 
 def udp_init():
     sensor_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -23,27 +22,27 @@ def udp_init():
 #     }
 # }
 
-def _gen_random_temp_data():
-    temp_range = random.choices([1,2,3,4], [0.6, 0.2, 0.15, 0.05])[0]
-    if temp_range == 1:
-        return random.randint(60, 100)
-    elif temp_range == 2:
-        return random.randint(10, 59)
-    elif temp_range == 3:
-        return random.randint(101, 120)
-    else:
-        return random.randint(200, 500)
+# def _gen_random_temp_data():
+#     temp_range = random.choices([1,2,3,4], [0.6, 0.2, 0.15, 0.05])[0]
+#     if temp_range == 1:
+#         return random.randint(60, 100)
+#     elif temp_range == 2:
+#         return random.randint(10, 59)
+#     elif temp_range == 3:
+#         return random.randint(101, 120)
+#     else:
+#         return random.randint(200, 500)
 
-def generate_random_data(start, end):
-    random_data = {}
-    random_data["type"] = "sensor_data"
-    content = {}
-    content["time"] = str(datetime.datetime.now())
-    content["value"] = str(_gen_random_temp_data())
-    random_data["content"] = content
-    # print(random_data['content'])
-    random_data = json.dumps(random_data)
-    return random_data
+# def generate_random_data(start, end):
+#     random_data = {}
+#     random_data["type"] = "sensor_data"
+#     content = {}
+#     content["time"] = str(datetime.datetime.now())
+#     content["value"] = str(_gen_random_temp_data())
+#     random_data["content"] = content
+#     # print(random_data['content'])
+#     random_data = json.dumps(random_data)
+#     return random_data
     
 
 def receive_data(recipient_socket_address):
@@ -60,23 +59,21 @@ def receive_from_gateway(sensor_socket):
     while True:
         gateway_data = receive_data(sensor_socket)
         message = json.loads(gateway_data)
-        if message["action"] == "print":
-            print(message["value"])
-        elif message["action"] == "start":
+        if message["action"] == "start":
             state = True
         elif message["action"] == "stop":
             state = False
-        elif message["action"] == "poll_rate":
-            poll_rate = float(message["value"])
 
 def send_to_gateway(sensor_socket, gateway_ip_address, gateway_port, Registration_Message):
     send_data(sensor_socket, gateway_ip_address, gateway_port, Registration_Message)
     global state
     while True:
         if state:
-            Message = generate_random_data(10, 40)
-            send_data(sensor_socket, gateway_ip_address, gateway_port, Message)
-            time.sleep(poll_rate)
+            print("ALARM IS ON")
+            time.sleep(3)
+            # # Message = generate_random_data(10, 40)
+            # send_data(sensor_socket, gateway_ip_address, gateway_port, Message)
+            # time.sleep(poll_rate)
 
 
 def sensor_gateway_thread_init(sensor_socket, gateway_ip_address, gateway_port, Message):
@@ -107,7 +104,6 @@ def get_sensor_info(sensor_file_name):
     with open(sensor_file_name, 'r') as fp:
         sensor_data = json.load(fp)
     #sensor_data = json.dumps(sensor_data)
-    poll_rate = int(sensor_data['specifications']['poll_rate'])
     return sensor_data
 
 def create_init_message(sensor_data):

@@ -23,23 +23,26 @@ def udp_init():
 #     }
 # }
 
-def _gen_random_temp_data():
-    temp_range = random.choices([1,2,3,4], [0.6, 0.2, 0.15, 0.05])[0]
-    if temp_range == 1:
-        return random.randint(60, 100)
-    elif temp_range == 2:
-        return random.randint(10, 59)
-    elif temp_range == 3:
-        return random.randint(101, 120)
+current_timer = 0
+def _gen_random_detection_data():
+    global current_timer
+    if current_timer > 0:
+        current_timer -= 1
+        return 1
     else:
-        return random.randint(200, 500)
+        c = random.choices([1,0], [0.1,0.9])[0]
+        if c == 1:
+            current_timer = random.randint(50, 80)
+            return 1
+        return 0
+
 
 def generate_random_data(start, end):
     random_data = {}
     random_data["type"] = "sensor_data"
     content = {}
     content["time"] = str(datetime.datetime.now())
-    content["value"] = str(_gen_random_temp_data())
+    content["value"] = str(_gen_random_detection_data())
     random_data["content"] = content
     # print(random_data['content'])
     random_data = json.dumps(random_data)
@@ -53,7 +56,7 @@ def receive_data(recipient_socket_address):
 
 def send_data(sock, recipient_ip_address, recipient_port, Message):
     sock.sendto(Message.encode(), (recipient_ip_address, recipient_port))
-    #print(Message)
+    print(Message)
 
 def receive_from_gateway(sensor_socket):
     global state, poll_rate
@@ -104,10 +107,11 @@ def get_gateway_details():
     return gateway_ip_address, gateway_port
 
 def get_sensor_info(sensor_file_name):
+    global poll_rate
     with open(sensor_file_name, 'r') as fp:
         sensor_data = json.load(fp)
     #sensor_data = json.dumps(sensor_data)
-    poll_rate = int(sensor_data['specifications']['poll_rate'])
+    poll_rate = float(sensor_data['specifications']['poll_rate'])
     return sensor_data
 
 def create_init_message(sensor_data):

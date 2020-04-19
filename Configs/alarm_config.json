@@ -1,0 +1,16 @@
+{
+    "manufacturer_info": {
+        "name":"alarm-sens-manufacturer",
+        "date":"2000-1-11",
+        "model No":"groof"
+    },
+    "specifications":{
+        "rating":"0.15wh",
+        "range":"2m"
+    },
+    "output_format":{
+        "None":"This is one way alarm sensor"
+    },
+    "type":"alarm",
+    "actions":["start", "stop"] 
+}

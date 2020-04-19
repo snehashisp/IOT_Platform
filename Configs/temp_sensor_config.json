@@ -7,11 +7,11 @@
     "specifications":{
         "rating":"0.15wh",
         "range":"2m",
-        "poll_rate":30
+        "poll_rate":10
     },
     "output_format":{
         "Number":"Farhenheit in the range 0-100 degrees"
     },
     "type":"temperature",
-    "actions":["start", "stop", "poll_rate", "print"] 
+    "actions":["start", "stop", "print"] 
 }
