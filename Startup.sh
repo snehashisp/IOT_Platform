@@ -37,6 +37,21 @@ else
     echo "Failed to start Kafka" | tee $logfile
 fi
 
+mongo_status=`systemctl is-active mongod`
+if [[ $mongo_status == "inactive" ]]
+then
+    mongo_status=`systemctl start mongod`
+    if [[ $mongo_status == "inactive" ]]
+    then
+        echo "Mongo db service cannot be started" | tee -a $logfile
+    else
+        echo "Mongo db service started" | tee -a $logfile
+    fi
+else
+    echo "Mongo Service Running"
+fi
+
+
 kafka_connect_status=`curl -s -o /dev/null -I -w "%{http_code}" localhost:8083`
 if [ $kafka_connect_status -eq 200 ]
 then
@@ -54,19 +69,6 @@ else
 	fi
 fi
 
-mongo_status=`systemctl is-active mongod`
-if [[ $mongo_status == "inactive" ]]
-then
-	mongo_status=`systemctl start mongod`
-	if [[ $mongo_status == "inactive" ]]
-	then
-		echo "Mongo db service cannot be started" | tee -a $logfile
-	else
-		echo "Mongo db service started" | tee -a $logfile
-	fi
-else
-	echo "Mongo Service Running"
-fi
 
 start_cluser=0
 managers=2

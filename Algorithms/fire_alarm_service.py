@@ -58,7 +58,7 @@ def plot_data_thread(duration):
         coord = []
         for d in data:
             coord.append(int(d['value']))
-        print(coord)
+        #print(coord)
         time.sleep(wait_time)
 
 alarm_thread = threading.Thread(target = run_alarm_thread)

@@ -55,3 +55,4 @@ class Registry:
     
     def getGateways(self):
         return list(self.gateway_collection.find())
+
