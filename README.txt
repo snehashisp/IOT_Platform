@@ -1,7 +1,9 @@
 Sensor Platform
 Automated AC Service 
 
-0. cd to the folder Sensor_Platform. run all commands from here
+prerequisite:
+cd to the folder Sensor_Platform. run all commands from here
+python version used is python3
 
 1. To start up all services in platform run
 ./Startup.sh -cluser 
@@ -15,4 +17,21 @@ A prompt will show up on the simple command line interface to get config details
 python Algorithms/automated_ac_service.py [NAME OF SENSOR AS GIVEN IN CONFIG]
 
 The prompts should show up on the sensor window after a period of delay(30-60 sec).
+
+
+=============================================
+
+Detail steps for fire alarm service.
+
+1. For this do the prerequisites and steps 1, 2 as previous.
+2. Add the alarm sensor as well.
+python Sensors/alarm.py Configs/alarm_config.json
+In the prompt for the alarm sensor in the command line user interface. Add the details of the alarm sensor. Make sure to give the location of the sensor as the same location as the temperature sensor.
+3. Start the algortihm for fire service
+python Sensors/fire_alarm_service.py [NAME OF THE TEMP SENSOR AS GIVEN IN CONFIG]
+
+
+
+
+
 
