@@ -4,6 +4,8 @@ Automated AC Service
 prerequisite:
 cd to the folder Sensor_Platform. run all commands from here
 python version used is python3
+put the latest version of kakfa as the folder 'kafka' in the same directory 
+-----
 
 1. To start up all services in platform run
 ./Startup.sh -cluser 
