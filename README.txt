@@ -7,14 +7,14 @@ Prerequisite:
 * python version used is python3
 * put the latest version of kakfa as the folder 'kafka' in the same directory 
 * make a empty new folder named 'log'
-* comment the last line in ~/.bashrc if there is some error.
+* comment the CLASSPATH variable in ~/.bashrc if there is some error.
 
-* Add mongo plugins if required(i.e.,if it is still not running)[add detail][Download plugins from https://search.maven.org/remotecontent?filepath=org/mongodb/kafka/mongo-kafka-connect/1.1.0/mongo-kafka-connect-1.1.0-all.jar , 
-and save to /usr/local/share/kafka/plugins/ (Create the directory if required, if this path doesn't exist)]
+* KAFKA CONNECT SETUP
+	** Add mongo plugins if required(i.e.,if it is still not running)[add detail][Download plugins from https://search.maven.org/remotecontent?filepath=org/mongodb/kafka/mongo-kafka-connect/1.1.0/mongo-kafka-connect-1.1.0-all.jar , 
+	and save to /usr/local/share/kafka/plugins/ (Create the directory if required, if this path doesn't exist)]
+	** Go to Kafka, config, connect-standalone.properties,  uncomment "plugin.path=/usr/local/share/java,/usr/local/share/kafka/plugins,/opt/connectors,"
 
-* Go to Kafka, config, connect-standalone.properties,  uncomment "plugin.path=/usr/local/share/java,/usr/local/share/kafka/plugins,/opt/connectors,"
-*python Utils/SimpleCLUser.py
-* export PYTHONPATH="$PYTHONPATH:/home/aditi/Desktop/coursework/SEM4/CSE563_IAS/Project/Group_2_Apr_2/IOT_Platform/"
+* Export the environt variable as export PYTHONPATH="$PYTHONPATH:[FULL PATH OF THE FOLDER WHERE IOT_PLATFORM IS STORED]"
 
 -----
 
