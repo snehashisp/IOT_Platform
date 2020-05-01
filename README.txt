@@ -1,10 +1,21 @@
 Sensor Platform
 Automated AC Service 
 
-prerequisite:
-cd to the folder Sensor_Platform. run all commands from here
-python version used is python3
-put the latest version of kakfa as the folder 'kafka' in the same directory 
+Prerequisite:
+
+* cd to the folder Sensor_Platform. run all commands from here
+* python version used is python3
+* put the latest version of kakfa as the folder 'kafka' in the same directory 
+* make a empty new folder named 'log'
+* comment the last line in ~/.bashrc if there is some error.
+
+* Add mongo plugins if required(i.e.,if it is still not running)[add detail][Download plugins from https://search.maven.org/remotecontent?filepath=org/mongodb/kafka/mongo-kafka-connect/1.1.0/mongo-kafka-connect-1.1.0-all.jar , 
+and save to /usr/local/share/kafka/plugins/ (Create the directory if required, if this path doesn't exist)]
+
+* Go to Kafka, config, connect-standalone.properties,  uncomment "plugin.path=/usr/local/share/java,/usr/local/share/kafka/plugins,/opt/connectors,"
+*python Utils/SimpleCLUser.py
+* export PYTHONPATH="$PYTHONPATH:/home/aditi/Desktop/coursework/SEM4/CSE563_IAS/Project/Group_2_Apr_2/IOT_Platform/"
+
 -----
 
 1. To start up all services in platform run
@@ -23,7 +34,7 @@ The prompts should show up on the sensor window after a period of delay(30-60 se
 
 =============================================
 
-Detail steps for fire alarm service.
+Detailed steps for fire alarm service.
 
 1. For this do the prerequisites and steps 1, 2 as previous.
 2. Add the alarm sensor as well.
