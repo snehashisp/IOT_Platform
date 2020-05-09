@@ -24,9 +24,9 @@ class Sensor(object):
     def getDatabaseRetriever(self):
         return DatabaseRetriever(self.configs["db_endpoint"])
     
-    def getKafkaRetriever(self, user):
+    def getKafkaRetriever(self, user, skip_assign = False):
         sensor_topic = "_".join(self.ip_port.split('.'))
-        return KafkaRetriever(sensor_topic , user)
+        return KafkaRetriever(sensor_topic , user, skip_assign = skip_assign)
     
     def _construct_action_message(self, action, value = None):
         message = json.dumps({

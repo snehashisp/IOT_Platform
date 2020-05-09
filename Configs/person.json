@@ -1,0 +1,17 @@
+{
+    "manufacturer_info": {
+        "name":"None",
+        "date":"1995-05-29",
+        "model No":"None"
+    },
+    "specifications":{
+        "rating":"0.15wh",
+        "range":"2m",
+        "poll_rate":3
+    },
+    "output_format":{
+        "None":"This is one way alarm sensor"
+    },
+    "type":"person",
+    "actions":["start", "stop", "restrict", "poll_rate", "release"] 
+}

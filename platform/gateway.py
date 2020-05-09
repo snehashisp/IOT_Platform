@@ -77,7 +77,7 @@ class Gateway:
     
     def kafka_receive_message(self, consumer_topic_name):
         self.c.subscribe([consumer_topic_name])
-        msg = self.c.poll(1.0)
+        msg = self.c.poll(0.01)
         if msg is not None:
             msg = msg.value().decode('utf-8')
         return msg
